@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>农商银行计算</title>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a0509df2f6b10e88d5ee99a6faf6d643";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="assets/js/jquery-1.8.3.min.js"></script>
+</head>
+<body onLoad="sendRequest()" >
+
+<div class="videozz"></div>
+	
+   
+<div class="box">
+	<div class="box-a">
+	<p id="az"></p>
+		<p id="a1" ></p></br>
+		<p id="bz"></p>
+		<p id="b1"></p></br>
+		<p id="cz"></p>
+		<p id="c1"></p></br>
+		<p id="dz"></p>
+		<p id="d1"></p>	</br>
+		
+    <div class="m-2">
+          <div class="m-2-1">
+            <form action="#" method="post">
+			<div class="m-2-2-2">
+                   <input class="am-active" type="button" checke="1"val="1.0855" yue="36" value="三年"id="option1" /> 
+				   <!--<input   class="am-active"  type="button"checke="0" val="1.0800" yue="24"style="background:transparent" value="二年"id="option2" />  
+				   <input  class="am-active" type="button" checke="0"val="1.0400" yue="12"style="background:transparent"value="一年" id="option3" />--> 
+                </div> 
+				<script type="text/javascript">
+				$("#option2").click(function(){
+          $("#option2").css("background", "#1d87d0");
+		  $("#option1").css("background", "transparent");
+		  $("#option3").css("background", "transparent"); 
+		   $("#option2").attr("checke","1");
+		    $("#option1").attr("checke","0");
+			 $("#option3").attr("checke","0");
+	});	$("#option3").click(function(){
+          $("#option3").css("background", "#1d87d0");
+		  $("#option2").css("background", "transparent");
+		  $("#option1").css("background", "transparent"); 
+		  $("#option3").attr("checke","1");
+		    $("#option2").attr("checke","0");
+			 $("#option1").attr("checke","0");
+	});	$("#option1").click(function(){
+          $("#option1").css("background", "#1d87d0");
+		  $("#option2").css("background", "transparent");
+		  $("#option3").css("background", "transparent"); 
+		  $("#option1").attr("checke","1");
+		    $("#option2").attr("checke","0");
+			 $("#option3").attr("checke","0");
+	});
+				</script>
+                <div class="m-2-2">
+                   <input type="text" id="in"placeholder="请输入利率" />
+                </div>
+                <div class="m-2-2">
+                   <input type="text" id="dai"placeholder="请输入贷款金额"/>
+                </div>
+               
+                <div class="m-2-2-2-2">
+                   <input type="button" id="sum"value="计算" /> 
+                  
+                </div>
+                    
+            </form>
+			<style>
+p{padding:0px; margin:0px;display: inline;color:#f4ab20;font-weight:bold }
+html{height:100%;}
+body{overflow:scroll;}
+</style>
+				<div class="am-g">
+		</div>
+          </div>
+		
+    </div>
+	  	
+	<script type="text/javascript">
+function accAdd(arg1, arg2) {//加法
+    var r1, r2, m, c;
+    try {
+        r1 = arg1.toString().split(".")[1].length;
+    }
+    catch (e) {
+        r1 = 0;
+    }
+    try {
+        r2 = arg2.toString().split(".")[1].length;
+    }
+    catch (e) {
+        r2 = 0;
+    }
+    c = Math.abs(r1 - r2);
+    m = Math.pow(10, Math.max(r1, r2));
+    if (c > 0) {
+        var cm = Math.pow(10, c);
+        if (r1 > r2) {
+            arg1 = Number(arg1.toString().replace(".", ""));
+            arg2 = Number(arg2.toString().replace(".", "")) * cm;
+        } else {
+            arg1 = Number(arg1.toString().replace(".", "")) * cm;
+            arg2 = Number(arg2.toString().replace(".", ""));
+        }
+    } else {
+        arg1 = Number(arg1.toString().replace(".", ""));
+        arg2 = Number(arg2.toString().replace(".", ""));
+    }
+    return (arg1 + arg2) / m;
+}
+function accMul(arg1, arg2) {//解决浮点乘法
+    var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
+    try {
+        m += s1.split(".")[1].length;
+    }
+    catch (e) {
+    }
+    try {
+        m += s2.split(".")[1].length;
+    }
+    catch (e) {
+    }
+    return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
+}
+function accSub(arg1, arg2) {//浮点减法
+    var r1, r2, m, n;
+    try {
+        r1 = arg1.toString().split(".")[1].length;
+    }
+    catch (e) {
+        r1 = 0;
+    }
+    try {
+        r2 = arg2.toString().split(".")[1].length;
+    }
+    catch (e) {
+        r2 = 0;
+    }
+    m = Math.pow(10, Math.max(r1, r2)); //last modify by deeka //动态控制精度长度
+    n = (r1 >= r2) ? r1 : r2;
+    return ((arg1 * m - arg2 * m) / m).toFixed(n);
+}
+function accDiv(arg1, arg2) {//浮点除法
+    var t1 = 0, t2 = 0, r1, r2;
+    try {
+        t1 = arg1.toString().split(".")[1].length;
+    }
+    catch (e) {
+    }
+    try {
+        t2 = arg2.toString().split(".")[1].length;
+    }
+    catch (e) {
+    }
+    with (Math) {
+        r1 = Number(arg1.toString().replace(".", ""));
+        r2 = Number(arg2.toString().replace(".", ""));
+        return (r1 / r2) * pow(10, t2 - t1);
+    }
+}
+$(document).ready(function(){		
+$("#sum").click(function(){
+var ru=1.09;
+var yue=36;
+   $(".am-active").each(function(){
+      if($(this).attr("checke")=="1")
+	  {
+	  ru=parseFloat($(this).attr("val"));
+	  yue=parseFloat($(this).attr("yue"));
+	  }
+    });
+		var a=accAdd(2,accDiv(parseFloat($("#in").val()),100));//a是中间利差
+	var temp=accSub(a,ru);
+	var b=parseInt($("#dai").val());//b是贷款额度
+	var f=accMul(temp,b);//分期金额精确值
+	var c=(Math.ceil(f/100))*100;//c是向上取整后的中间值即总贷款额度
+	var d=accMul(c,ru)//d是总共的本息额度
+	var e=accDiv(d,yue);//e是月供
+		$("#a1").html("");
+		$("#b1").html("");
+		$("#c1").html("");
+		$("#d1").html("");
+		$("#az").html("公式:");
+			$("#a1").html(a+"-"+ru+"="+temp);
+			$("#bz").html("分期金额:");
+			$("#b1").html(b+"*"+temp+"="+f+"-->"+c);
+			$("#cz").html("贷款总金额:");
+			$("#c1").html(c+"*"+ru+"="+d);
+			$("#dz").html("月供:");
+			$("#d1").html(d+"/"+yue+"="+e);	
+		
+		});
+	});
+</script>
+    <div class="m-5"> 
+    <div id="m-5-id-1"> 
+    <div id="m-5-2"> 
+    <div id="m-5-id-2">  
+    </div> 
+    <div id="m-5-id-3"></div> 
+    </div> 
+    </div> 
+    </div>   
+    <div class="m-10"></div>
+  
+    <!-- <div class="m-x10"></div>
+    <div class="m-x11"></div>
+    <div class="m-x12 xzleft"></div>
+    <div class="m-x13"></div>
+    <div class="m-x14 xzleft"></div>
+    <div class="m-x15"></div>
+    <div class="m-x16 xzleft"></div>-->
+    <div class="m-x17 xzleft"></div>
+    <div class="m-x18"></div>
+    <div class="m-x19 xzleft"></div>
+    <div class="m-x20"></div>  
+    <div class="m-8"></div>
+    <div class="m-9"><div class="masked1" id="sx8" style="margin-right:200px">农商银行</div></div> 
+    <div class="m-11">
+    	<div class="m-k-1"><div class="t1"></div></div>
+        <div class="m-k-2"><div class="t2"></div></div>
+        <div class="m-k-3"><div class="t3"></div></div>
+        <div class="m-k-4"><div class="t4"></div></div>
+        <div class="m-k-5"><div class="t5"></div></div>
+        <div class="m-k-6"><div class="t6"></div></div>
+        <div class="m-k-7"><div class="t7"></div></div>
+    </div>   
+    <div class="m-14"><div class="ss"></div></div>
+    <div class="m-15-a">
+    <div class="m-15-k">
+    	<div class="m-15xz1">
+   
+        </div>
+    </div>
+    </div>
+    <div class="m-16"></div>
+    <div class="m-17"></div>
+    <div class="m-18 xzleft"></div>
+    <div class="m-19"></div>
+    <div class="m-20 xzleft"></div>
+    <div class="m-21"></div>
+    <div class="m-22"></div>
+    <div class="m-23 xzleft"></div>
+    <div class="m-24" id="localtime"></div>
+    </div>
+</div>
+<script src="assets/js/common.min.js"></script>
+<div style="text-align:center;">
+</div>
+</body>
+</html>
